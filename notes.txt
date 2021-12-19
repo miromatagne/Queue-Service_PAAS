@@ -1,0 +1,6 @@
+How to upload an image into GitLab Container Registry?
+
+docker login registry.gitlab.com
+
+docker build -t registry.gitlab.com/mmatagne/sad2122/<image> .
+docker push registry.gitlab.com/mmatagne/sad2122/<image>

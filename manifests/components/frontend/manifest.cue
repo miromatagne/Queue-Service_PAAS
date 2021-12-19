@@ -72,7 +72,7 @@ import (
             secret: ""
           }
           // Image name
-          tag: "kumori-systems/community/image-registry/examples/hello-world-frontend:v0.0.1"
+          tag: "mmatagne/sad2122/frontend:latest"
         }
 
         // Maps parts of the component configuration to content that can be
@@ -92,7 +92,7 @@ import (
             // in HTTP_SERVER_PORT_ENV environment variable, so it is injected.
             // 'strconv' CUE package includes the FromtUint function, that returns
             // the string representation of i in the given base
-            HTTP_SERVER_PORT_ENV: value: strconv.FormatUint(srv.server.restapi.port, 10)
+            PORT: value: strconv.FormatUint(srv.server.restapi.port, 10)
           }
         }
       }
