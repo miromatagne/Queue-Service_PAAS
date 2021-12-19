@@ -1,3 +1,4 @@
+package frontend
 
 import (
   // Kumori Service model (mandatory)

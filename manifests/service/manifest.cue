@@ -1,3 +1,5 @@
+package paas
+
 import (
   // Kumori Service Model (mandatory)
   k "kumori.systems/kumori/kmv"
@@ -68,7 +70,7 @@ import (
     srv: {
       // Server channels: functionality provided by the service through an endpoint.
       server: {
-        hello: { protocol: "http", port: 80 }
+        paas: { protocol: "http", port: 80 }
       }
     }
 
@@ -83,7 +85,7 @@ import (
     link: {
 
       // Outside -> FrontEnd (LB connector)
-			self: hello: to: "inbound"
+			self: paas: to: "inbound"
       inbound: to: frontend: "restapi"
 
     }
