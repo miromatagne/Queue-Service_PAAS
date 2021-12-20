@@ -10,7 +10,7 @@ import (
   // is the name of the CUE package.
   // Note: When the package name and directory are the same, the package name
   // can be omitted.
-  s "vera.kumori.cloud/saulmiro/paas/service:paas"
+  s "vera.kumori.cloud/sm/paas/service:paas"
 )
 
 // A Kumori Service Application is deployed as a service within a Kumori Platform.
@@ -43,6 +43,9 @@ import (
     // each role
     hsize: {
       frontend: {
+        $_instances: 1
+      }
+      queue: {
         $_instances: 1
       }
     }

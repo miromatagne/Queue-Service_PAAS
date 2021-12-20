@@ -1,4 +1,4 @@
-package frontend
+package queue
 
 import (
   // Kumori Service model (mandatory)
@@ -17,7 +17,7 @@ import (
   // its version must change.
   ref: {
     domain: "vera.kumori.cloud"
-    name: "paas_frontend"
+    name: "paas_queue"
     version: [0,0,1]
   }
 
@@ -27,11 +27,10 @@ import (
     srv: {
       // Server channels: functionality provided by the component through an endpoint.
       server: {
-        restapi: { protocol: "http", port: 8080 }
+        client: { protocol: "tcp", port: 4222 }
       }
       // Client channels: dependency on some other component.
       client: {
-        queue: { protocol: "tcp", port: 4222 }
       }
       // Duplex channels: channels code both a client and a server channel,
       // modeling endpoints used to initiate requests as well as serve them.
@@ -64,18 +63,18 @@ import (
 
       // Only one container, in this case.
       frontend: {
-        name: "frontend"
+        name: "queue"
 
         // Docker image
         image: {
           // Docker registry
           hub: {
-            name: "registry.gitlab.com"
+            name: "hub.docker.com"
             // In this case a public image is used: credentials (secret) not required
             secret: ""
           }
           // Image name
-          tag: "mmatagne/sad2122/frontend:latest"
+          tag: "_/nats"
         }
 
         // Maps parts of the component configuration to content that can be

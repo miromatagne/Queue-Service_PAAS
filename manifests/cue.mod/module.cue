@@ -3,7 +3,7 @@
 // - Manifest definition of the Kumori Component "frontend"
 // - Manifest definition of the Kumori Service Application "helloworld"
 // - Manifest definition to deploy the Kumori Service Application "helloworld"
-module: "vera.kumori.cloud/saulmiro/paas"
+module: "vera.kumori.cloud/sm/paas"
 
 // TODO: kumori service model should be opensource, whith no credentials
 creds = {

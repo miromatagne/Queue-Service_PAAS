@@ -11,7 +11,8 @@ import (
   // Note: When the package name and directory are the same, the package name
   // can be omitted.
   // f "kumori.systems/examples/helloworld/components/frontend:frontend"
-  f "vera.kumori.cloud/saulmiro/paas/components/frontend"
+  f "vera.kumori.cloud/sm/paas/components/frontend"
+  q "vera.kumori.cloud/sm/paas/components/queue"
 )
 
 // In Kumori Platform, a Service Application represents a set of interconnected
@@ -49,12 +50,20 @@ import (
     role: {
       frontend: k.#Role
       frontend: artifact: f.#Manifest
+      queue: k.#Role
+      queue: artifact: q.#Manifest
     }
 
     // Configuration spread: computing each role configuration based on service
     // configuration (no configuration in this example).
     role: {
       frontend: {
+        cfg: {
+          parameter: {}
+          resource: {}
+        }
+      }
+      queue: {
         cfg: {
           parameter: {}
           resource: {}
