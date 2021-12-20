@@ -1,4 +1,4 @@
-package queue
+package frontend
 
 import (
   // Kumori Service model (mandatory)
@@ -17,7 +17,7 @@ import (
   // its version must change.
   ref: {
     domain: "vera.kumori.cloud"
-    name: "paas_queue"
+    name: "paas_worker"
     version: [0,0,1]
   }
 
@@ -27,10 +27,10 @@ import (
     srv: {
       // Server channels: functionality provided by the component through an endpoint.
       server: {
-        client: { protocol: "tcp", port: 4222 }
       }
       // Client channels: dependency on some other component.
       client: {
+        queue: { protocol: "tcp", port: 4222 }
       }
       // Duplex channels: channels code both a client and a server channel,
       // modeling endpoints used to initiate requests as well as serve them.
@@ -62,19 +62,19 @@ import (
     code: {
 
       // Only one container, in this case.
-      queue: {
-        name: "queue"
+      worker: {
+        name: "worker"
 
         // Docker image
         image: {
           // Docker registry
           hub: {
-            name: "hub.docker.com"
+            name: "registry.gitlab.com"
             // In this case a public image is used: credentials (secret) not required
             secret: ""
           }
           // Image name
-          tag: "_/nats"
+          tag: "mmatagne/sad2122/worker:latest"
         }
 
         // Maps parts of the component configuration to content that can be
@@ -95,7 +95,6 @@ import (
             // 'strconv' CUE package includes the FromtUint function, that returns
             // the string representation of i in the given base
             PORT: value: strconv.FormatUint(srv.server.restapi.port, 10)
-            QUEUE_ADDR: value: 0.queue
           }
         }
       }

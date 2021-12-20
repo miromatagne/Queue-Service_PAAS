@@ -48,6 +48,9 @@ import (
       queue: {
         $_instances: 1
       }
+      worker: {
+        $_instances: 1
+      }
     }
 
   }

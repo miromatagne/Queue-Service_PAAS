@@ -13,6 +13,7 @@ import (
   // f "kumori.systems/examples/helloworld/components/frontend:frontend"
   f "vera.kumori.cloud/sm/paas/components/frontend"
   q "vera.kumori.cloud/sm/paas/components/queue"
+  w "vera.kumori.cloud/sm/paas/components/queue"
 )
 
 // In Kumori Platform, a Service Application represents a set of interconnected
@@ -52,6 +53,8 @@ import (
       frontend: artifact: f.#Manifest
       queue: k.#Role
       queue: artifact: q.#Manifest
+      worker: k.#Role
+      worker: artifact: w.#Manifest
     }
 
     // Configuration spread: computing each role configuration based on service
@@ -64,6 +67,12 @@ import (
         }
       }
       queue: {
+        cfg: {
+          parameter: {}
+          resource: {}
+        }
+      }
+      worker: {
         cfg: {
           parameter: {}
           resource: {}
