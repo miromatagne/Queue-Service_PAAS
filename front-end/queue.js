@@ -1,16 +1,16 @@
-import { connect, Empty, StringCodec } from "nats";
+import { connect, StringCodec } from "nats";
 
 const QUEUE_ADDR = process.env.QUEUE_ADDR;
 const TOPIC = "job";
 
-async function connect() {
+async function asyncConnect() {
   return await connect({ servers: QUEUE_ADDR });
 }
-const queue = await connect();
+const queue = await asyncConnect();
 
 const sc = StringCodec();
 
-const publish = (msg) => {
+const publish = async (msg) => {
   return await queue
     .request(TOPIC, sc.encode(msg), { timeout: 2000 })
     .then((m) => {
