@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.post("/", async (req, res) => {
     const message = req.body.message;
-    const result = queue.publish(message);
+    const result = await queue.publish(message);
     res.send(result);
 });
 
