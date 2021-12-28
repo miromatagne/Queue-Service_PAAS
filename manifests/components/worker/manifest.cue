@@ -1,4 +1,4 @@
-package frontend
+package worker
 
 import (
   // Kumori Service model (mandatory)
@@ -30,7 +30,7 @@ import (
       }
       // Client channels: dependency on some other component.
       client: {
-        queue: { protocol: "tcp", port: 4222 }
+        queue: { protocol: "tcp" }
       }
       // Duplex channels: channels code both a client and a server channel,
       // modeling endpoints used to initiate requests as well as serve them.
@@ -94,7 +94,7 @@ import (
             // in HTTP_SERVER_PORT_ENV environment variable, so it is injected.
             // 'strconv' CUE package includes the FromtUint function, that returns
             // the string representation of i in the given base
-            PORT: value: strconv.FormatUint(srv.server.restapi.port, 10)
+            QUEUE_ADDR: value: "0.queue"
           }
         }
       }

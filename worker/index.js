@@ -1,6 +1,6 @@
 import { connect, StringCodec } from "nats";
 
-const QUEUE_ADDR = process.env.QUEUE_ADDR | "localhost";
+const QUEUE_ADDR = process.env.QUEUE_ADDR || "localhost";
 const TOPIC = "job";
 
 async function asyncConnect() {
@@ -11,11 +11,15 @@ async function asyncConnect() {
     return queue;
   } catch (err) {
     console.log(`Error connecting to ${QUEUE_ADDR}`);
+    return null;
   }
 }
 
 const queue = await asyncConnect();
 const sc = StringCodec();
+
+if (queue == null)
+  process.exit(1);
 
 const sub = queue.subscribe(TOPIC);
 (async (inSub) => {

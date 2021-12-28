@@ -69,12 +69,12 @@ import (
         image: {
           // Docker registry
           hub: {
-            name: "hub.docker.com"
+            name: "registry.hub.docker.com"
             // In this case a public image is used: credentials (secret) not required
             secret: ""
           }
           // Image name
-          tag: "_/nats"
+          tag: "library/nats"
         }
 
         // Maps parts of the component configuration to content that can be
@@ -94,8 +94,6 @@ import (
             // in HTTP_SERVER_PORT_ENV environment variable, so it is injected.
             // 'strconv' CUE package includes the FromtUint function, that returns
             // the string representation of i in the given base
-            PORT: value: strconv.FormatUint(srv.server.restapi.port, 10)
-            QUEUE_ADDR: value: 0.queue
           }
         }
       }

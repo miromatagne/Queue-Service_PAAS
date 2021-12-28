@@ -13,7 +13,7 @@ import (
   // f "kumori.systems/examples/helloworld/components/frontend:frontend"
   f "vera.kumori.cloud/sm/paas/components/frontend"
   q "vera.kumori.cloud/sm/paas/components/queue"
-  w "vera.kumori.cloud/sm/paas/components/queue"
+  w "vera.kumori.cloud/sm/paas/components/worker"
 )
 
 // In Kumori Platform, a Service Application represents a set of interconnected
@@ -95,18 +95,19 @@ import (
     // Connectors, providing specific patterns of communication among channels.
     connector: {
       inbound: { kind: "lb" }
+      toqueue: { kind: "full" }
     }
 
     // Links specify the topology graph.
-    // In this case, there is only one load-balancer connector connecting the
-    // service channel and the role channel
     link: {
 
       // Outside -> FrontEnd (LB connector)
 			self: paas: to: "inbound"
       inbound: to: frontend: "restapi"
-
+      frontend: queue: to: "toqueue"
+      worker: queue: to: "toqueue"
+      toqueue: to: queue: "client"
+      
     }
   }
 }
-

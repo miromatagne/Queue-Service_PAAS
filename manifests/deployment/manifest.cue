@@ -5,8 +5,8 @@ import (
   k "kumori.systems/kumori/kmv"
 
   // Kumori Service Appication to be deployed.
-  // "kumori.systems/examples/helloworld is the name of the CUE module (defined
-  // in cue.mod/module.cue file), "service" is its directory path, and "helloworld"
+  // "vera.kumori.cloud/sm/paas is the name of the CUE module (defined
+  // in cue.mod/module.cue file), "service" is its directory path, and "paas"
   // is the name of the CUE package.
   // Note: When the package name and directory are the same, the package name
   // can be omitted.
@@ -21,7 +21,7 @@ import (
   // its version must change.
   ref: {
     domain: "vera.kumori.cloud"
-    name: "helloworld_cfg"
+    name: "smpaas_cfg"
     version: [0,0,1]
   }
 
