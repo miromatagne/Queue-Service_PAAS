@@ -1,11 +1,12 @@
 import { connect, StringCodec } from "nats";
 
 const QUEUE_ADDR = process.env.QUEUE_ADDR || "localhost";
+const QUEUE_PORT = 4222;
 const TOPIC = "job";
 
 async function asyncConnect() {
   try {
-    const queue = await connect({ servers: QUEUE_ADDR });
+    const queue = await connect({ servers: `${QUEUE_ADDR}:${QUEUE_PORT}` });
     console.log("Connected to queue");
     process.on("exit", () => { queue.close(); });
     return queue;
