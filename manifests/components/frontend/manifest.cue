@@ -96,7 +96,6 @@ import (
             // 'strconv' CUE package includes the FromtUint function, that returns
             // the string representation of i in the given base
             PORT: value: strconv.FormatUint(srv.server.restapi.port, 10)
-            QUEUE_ADDR: value: "0.queue"
           }
         }
       }

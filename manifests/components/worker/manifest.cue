@@ -94,7 +94,6 @@ import (
             // in HTTP_SERVER_PORT_ENV environment variable, so it is injected.
             // 'strconv' CUE package includes the FromtUint function, that returns
             // the string representation of i in the given base
-            QUEUE_ADDR: value: "0.queue"
           }
         }
       }
