@@ -1,6 +1,6 @@
 import { connect, StringCodec } from "nats";
 
-const QUEUE_ADDR = process.env.QUEUE_ADDR || "localhost";
+const QUEUE_ADDR = process.argv[2] || "localhost";
 const QUEUE_PORT = 4222;
 const TOPIC = "job";
 
