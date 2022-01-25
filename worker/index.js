@@ -23,7 +23,7 @@ const sc = StringCodec();
 
 if (queue == null) process.exit(1);
 
-const sub = queue.subscribe(TOPIC);
+const sub = queue.subscribe(TOPIC, {queue: "tasks"});
 (async (inSub) => {
   for await (const m of inSub) {
     console.log(`Received a task: ${sc.decode(m.data)}`);
