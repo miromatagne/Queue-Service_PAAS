@@ -41,7 +41,7 @@ const sub = queue.subscribe(TOPIC, { queue: "tasks" });
       default:
         res = "Unknown function";
     }
-    m.respond(res);
+    m.respond(sc.encode(res));
   }
 })(sub);
 
