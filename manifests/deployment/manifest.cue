@@ -43,13 +43,13 @@ import (
     // each role
     hsize: {
       frontend: {
-        $_instances: 3
+        $_instances: 1
       }
       queue: {
-        $_instances: 3
+        $_instances: 1
       }
       worker: {
-        $_instances: 3
+        $_instances: 1
       }
     }
 
