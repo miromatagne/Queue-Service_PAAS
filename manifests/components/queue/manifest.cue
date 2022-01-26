@@ -27,7 +27,7 @@ import (
     srv: {
       // Server channels: functionality provided by the component through an endpoint.
       server: {
-        client: { protocol: "tcp", port: 4222 }
+        apiserver: { protocol: "tcp", port: 4222 }
       }
       // Client channels: dependency on some other component.
       client: {

@@ -103,10 +103,10 @@ import (
 
       // Outside -> FrontEnd (LB connector)
 			self: paas: to: "inbound"
-      inbound: to: frontend: "restapi"
-      frontend: queue: to: "toqueue"
-      worker: queue: to: "toqueue"
-      toqueue: to: queue: "client"
+      inbound: to: frontend: "entrypoint"
+      frontend: queueclient: to: "toqueue"
+      worker: queueclient: to: "toqueue"
+      toqueue: to: queue: "apiserver"
       
     }
   }

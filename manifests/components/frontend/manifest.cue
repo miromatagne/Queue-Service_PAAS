@@ -27,11 +27,11 @@ import (
     srv: {
       // Server channels: functionality provided by the component through an endpoint.
       server: {
-        restapi: { protocol: "http", port: 8080 }
+        entrypoint: { protocol: "http", port: 8080 }
       }
       // Client channels: dependency on some other component.
       client: {
-        queue: { protocol: "tcp" }
+        queueclient: { protocol: "tcp" }
       }
       // Duplex channels: channels code both a client and a server channel,
       // modeling endpoints used to initiate requests as well as serve them.
