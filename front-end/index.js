@@ -7,9 +7,11 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 
 app.post("/", async (req, res) => {
-  const message = req.body.message;
-  console.log(`Receiving message: ${message}`);
-  const result = await queue.publish(message);
+  const body = req.body;
+  console.log(
+    `Receiving message of type ${body.type} and content ${body.content}`
+  );
+  const result = await queue.publish(JSON.stringify(body));
   console.log(`Result received: ${result}`);
   res.send(result);
 });

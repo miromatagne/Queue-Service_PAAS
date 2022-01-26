@@ -23,10 +23,38 @@ const sc = StringCodec();
 
 if (queue == null) process.exit(1);
 
-const sub = queue.subscribe(TOPIC, {queue: "tasks"});
+const sub = queue.subscribe(TOPIC, { queue: "tasks" });
 (async (inSub) => {
   for await (const m of inSub) {
-    console.log(`Received a task: ${sc.decode(m.data)}`);
-    m.respond(m.data);
+    const body = JSON.parse(sc.decode(m.data));
+    console.log(
+      `Received a task of type ${body.type} and content ${body.content}`
+    );
+    var res = "";
+    switch (body.type) {
+      case "echo":
+        res = echo(body.content);
+        break;
+      case "arithm":
+        res = arithm(body.content);
+        break;
+      default:
+        res = "Unknown function";
+    }
+    m.respond(res);
   }
 })(sub);
+
+function echo(msg) {
+  return msg;
+}
+
+function arithm(msg) {
+  var res = "";
+  try {
+    res = eval(msg);
+  } catch (e) {
+    res = "Invalid arithmetic operation";
+  }
+  return res;
+}
