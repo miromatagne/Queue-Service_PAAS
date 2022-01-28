@@ -75,7 +75,7 @@ import (
             secret: ""
           }
           // Image name
-          tag: "mmatagne/sad2122/frontend:0.0.2"
+          tag: "mmatagne/sad2122/frontend:0.0.5"
         }
 
         // Maps parts of the component configuration to content that can be
@@ -95,7 +95,6 @@ import (
             // in HTTP_SERVER_PORT_ENV environment variable, so it is injected.
             // 'strconv' CUE package includes the FromtUint function, that returns
             // the string representation of i in the given base
-            PORT: value: strconv.FormatUint(srv.server.restapi.port, 10)
           }
         }
       }

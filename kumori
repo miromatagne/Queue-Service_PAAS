@@ -1,0 +1,26 @@
+#!/bin/bash
+
+case $1 in
+  "deploy")
+    echo "Deploying..."
+    kumorictl deploy sm.paas/smpaasdep --deployment ./manifests/deployment --comment "SAD PaaS service deployment"
+    ;;
+  "undeploy")
+    echo "Undeploying..."
+    kumorictl undeploy sm.paas/smpaasdep
+    ;;
+  "link")
+    echo "Linking..."
+    kumorictl link sm.paas/smpaasdep:paas sm.paas/smpaasinb
+    ;;
+  "unlink")
+    echo "Unlinking..."
+    kumorictl unlink sm.paas/smpaasdep:paas sm.paas/smpaasinb
+    ;;
+  "describe")
+    kumorictl describe deployment sm.paas/smpaasdep
+    ;;
+  *)
+    echo "Incorrect option"
+    ;;
+esac

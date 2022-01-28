@@ -95,7 +95,7 @@ import (
     // Connectors, providing specific patterns of communication among channels.
     connector: {
       inbound: { kind: "lb" }
-      toqueue: { kind: "lb" }
+      toqueue: { kind: "full" }
     }
 
     // Links specify the topology graph.

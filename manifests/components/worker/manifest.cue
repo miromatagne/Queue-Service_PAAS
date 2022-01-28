@@ -74,7 +74,7 @@ import (
             secret: ""
           }
           // Image name
-          tag: "mmatagne/sad2122/worker:0.0.2"
+          tag: "mmatagne/sad2122/worker:0.0.5"
         }
 
         // Maps parts of the component configuration to content that can be
