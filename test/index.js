@@ -9,7 +9,7 @@ const service = axios.create({
 //(() => {let res = 0; for(let i = 0; i < 2000000000; i++) {res+=i} return res})()
 
 const ECHO_REQUEST   = {type: 'echo', content: 'echo'};
-const ARITHM_REQUEST = {type: 'arithm', content: '(() => {let res = 0; for(let i = 0; i < 2000000000; i++) {res+=i} return res})()'};
+const ARITHM_REQUEST = {type: 'arithm', content: '11*23'};
 
 async function sendRequest(req, times, verbose = 0)
 {
@@ -42,17 +42,17 @@ function sleep(ms) {
 
 async function main()
 {
+    const REQUESTS = 100;
+
     while (true)
     {
         // Send echo requests
-        console.log('Sending echo requests...');
-        await sendRequest(ECHO_REQUEST, 500, 1);
-        console.log('Requests sent');
+        console.log(`Sending ${REQUESTS} echo requests...`);
+        await sendRequest(ECHO_REQUEST, REQUESTS, 1);
 
         // Send arithmetic requests
-        console.log('Sending arithmetic requests...');
-        await sendRequest(ARITHM_REQUEST, 5, 1);
-        console.log('Requests sent');
+        console.log(`Sending ${REQUESTS} arithmetic requests...`);
+        await sendRequest(ARITHM_REQUEST, REQUESTS, 1);
     }
 }
 
