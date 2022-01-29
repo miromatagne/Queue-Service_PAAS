@@ -6,7 +6,7 @@ const TOPIC = "job";
 
 async function asyncConnect() {
   try {
-    const queue = await connect({ servers: QUEUE_ADDR.map(addr => `${addr}:${QUEUE_PORT}`)});
+    const queue = await connect({ servers: QUEUE_ADDR.map(addr => `${addr}:${QUEUE_PORT}`) });
     console.log(`Connected to queue: ${queue.getServer()}`);
     process.on("exit", () => {
       queue.close();
