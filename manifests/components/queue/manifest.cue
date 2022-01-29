@@ -76,7 +76,7 @@ import (
             secret: ""
           }
           // Image name
-          tag: "mmatagne/sad2122/queue:0.0.10"
+          tag: "mmatagne/sad2122/queue:0.0.12"
         }
 
         // Maps parts of the component configuration to content that can be
