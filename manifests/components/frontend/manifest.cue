@@ -27,10 +27,12 @@ import (
     srv: {
       // Server channels: functionality provided by the component through an endpoint.
       server: {
+        //Channel that allows to access the Fron-End
         entrypoint: { protocol: "http", port: 8080 }
       }
       // Client channels: dependency on some other component.
       client: {
+        //Channel that allows to communicate with the Queue
         queueclient: { protocol: "tcp" }
       }
       // Duplex channels: channels code both a client and a server channel,

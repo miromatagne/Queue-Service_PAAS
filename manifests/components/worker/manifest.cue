@@ -30,6 +30,7 @@ import (
       }
       // Client channels: dependency on some other component.
       client: {
+        //Channel used to communicate with the Queue
         queueclient: { protocol: "tcp" }
       }
       // Duplex channels: channels code both a client and a server channel,

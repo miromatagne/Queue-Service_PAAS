@@ -40,7 +40,7 @@ import (
     }
 
     // Horizontal size: in this case, just the initial number of instances of
-    // each role
+    // each role. In this case, 3 instances are used for each component
     hsize: {
       frontend: {
         $_instances: 3

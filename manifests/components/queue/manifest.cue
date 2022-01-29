@@ -27,6 +27,7 @@ import (
     srv: {
       // Server channels: functionality provided by the component through an endpoint.
       server: {
+        //Channel that receives requests from the Front-Enf and Workers
         apiserver: { protocol: "tcp", port: 4222 }
       }
       // Client channels: dependency on some other component.
@@ -38,6 +39,7 @@ import (
       // coordination protocols (e.g., consensus), and each one of those instances
       // plays both a "client" and a "server" role.
       duplex: {
+        //Channel used to coordinate the different Queue components
         coordination: { protocol: "tcp", port: 6222 }
       }
     }
