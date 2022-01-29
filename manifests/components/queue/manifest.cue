@@ -37,7 +37,9 @@ import (
       // (useful in scenarios where a group of instances must carry out complex
       // coordination protocols (e.g., consensus), and each one of those instances
       // plays both a "client" and a "server" role.
-      duplex: {}
+      duplex: {
+        coordination: { protocol: "tcp", port: 6222 }
+      }
     }
 
     // Component configuration (no configuration in this example).
@@ -69,12 +71,12 @@ import (
         image: {
           // Docker registry
           hub: {
-            name: "registry.hub.docker.com"
+            name: "registry.gitlab.com"
             // In this case a public image is used: credentials (secret) not required
             secret: ""
           }
           // Image name
-          tag: "library/nats"
+          tag: "mmatagne/sad2122/queue:0.0.10"
         }
 
         // Maps parts of the component configuration to content that can be

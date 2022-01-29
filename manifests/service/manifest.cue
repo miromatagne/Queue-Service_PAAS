@@ -96,6 +96,7 @@ import (
     connector: {
       inbound: { kind: "lb" }
       toqueue: { kind: "full" }
+      coord:   { kind: "full" }
     }
 
     // Links specify the topology graph.
@@ -104,10 +105,13 @@ import (
       // Outside -> FrontEnd (LB connector)
 			self: paas: to: "inbound"
       inbound: to: frontend: "entrypoint"
+
       frontend: queueclient: to: "toqueue"
       worker: queueclient: to: "toqueue"
       toqueue: to: queue: "apiserver"
-      
+
+      queue: coordination: to: "coord"
+      coord: to: queue: "coordination"
     }
   }
 }

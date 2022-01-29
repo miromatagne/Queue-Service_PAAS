@@ -46,7 +46,7 @@ import (
         $_instances: 3
       }
       queue: {
-        $_instances: 1
+        $_instances: 3
       }
       worker: {
         $_instances: 3
